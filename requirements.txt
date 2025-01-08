@@ -6,4 +6,5 @@ matplotlib
 flask
 pymongo
 certifi
+scikit-learn
 # -e .
