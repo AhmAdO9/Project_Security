@@ -6,4 +6,4 @@ matplotlib
 flask
 pymongo
 certifi
--e .
+# -e .
