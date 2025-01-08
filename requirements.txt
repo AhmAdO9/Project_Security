@@ -4,4 +4,6 @@ numpy
 seaborn
 matplotlib
 flask
-# -e .
+pymongo
+certifi
+-e .
