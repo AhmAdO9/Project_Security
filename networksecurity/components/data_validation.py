@@ -38,6 +38,7 @@ class DataValidation:
     def validate_number_of_columns(self, dataFrame:pd.DataFrame)->bool:
         try:
             number_of_columns = len(self._schema_config['columns'])
+           
             logging.info(f"Required number of columns:{number_of_columns}")
             logging.info(f"DataFrame has columns:{dataFrame.columns}")
 
@@ -55,6 +56,7 @@ class DataValidation:
             
             numerical_columns = self._schema_config['numerical_columns']
             number_of_columns = len(numerical_columns)
+          
             logging.info(f"Required number of numerical columns:{number_of_columns}")
 
             li = list(map(lambda x : False if x not in dataFrame.columns else True, numerical_columns))
@@ -77,6 +79,7 @@ class DataValidation:
             for column in base_df.columns:
                 d1_series = base_df[column]
                 d2_series = current_df[column]
+            
                 is_sample_dist = ks_2samp(d1_series, d2_series)
                 
                 if is_sample_dist.pvalue <= threshold:
@@ -131,18 +134,24 @@ class DataValidation:
             
 
             self.detect_dataset_drift(base_df=train_dataFrame, current_df=test_dataFrame)
+        
             dir_path = os.path.dirname(self.data_validation_config.valid_train_file_path)
+         
             os.makedirs(dir_path, exist_ok=True)
 
             train_dataFrame.to_csv(self.data_validation_config.valid_train_file_path, index=False, header=True)
+         
             test_dataFrame.to_csv(self.data_validation_config.valid_test_file_path, index=False, header=True)
 
             data_validation_artifact = DataValidationArtifact(
                 validation_status=status, 
+            
                 valid_train_file_path = self.data_validation_config.valid_train_file_path, 
                 valid_test_file_path = self.data_validation_config.valid_train_file_path, 
+              
                 invalid_train_file_path = None, 
                 invalid_test_file_path = None, 
+                
                 drift_report_file_path = self.data_validation_config.drift_report_file_path)
 
             return data_validation_artifact

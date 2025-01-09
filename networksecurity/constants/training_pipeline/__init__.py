@@ -35,8 +35,20 @@ DATA_VALIDATION_DRIFT_REPORT_DIR:str = "drift_report"
 DATA_VALIDATION_DRIFT_REPORT_FILE_NAME:str = "report.yaml"
 
 
+""" Data Transformation related constant values """
 
+DATA_TRANSFORMATION_DIR_NAME:str = "data_transformation"
+DATA_TRANSFORMATION_TRANFORMED_DATA_DIR:str = "transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR:str = "transformed_object"
+PREPROCESSED_OBJECT_FILE_PATH:str =  "preprocessor.pkl"
 
+# KNN imputer class to replace nan values - it will replace the missing values by calculating the average of 3 nearest neighbors.
+DATA_TRANSFORMATION_IMPUTER_PARAMS:dict = {
+            "missing_values":np.nan,
+            "n_neighbors":3,
+            "weights":"uniform",
+
+}
 
 
 
