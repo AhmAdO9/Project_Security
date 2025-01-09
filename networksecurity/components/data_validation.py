@@ -63,8 +63,7 @@ class DataValidation:
                 return False
             else:
                 return True
-            
-            return status
+
 
         except Exception as e:
             raise NetworkSecurityException(e, sys)
