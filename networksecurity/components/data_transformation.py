@@ -22,8 +22,8 @@ from networksecurity.utils.utils import (
 
 class DataTransformation:
     def __init__(self, 
-                data_validation_artifact:DataValidationArtifact,
-                data_transformation_config:DataTransformationConfig):
+                data_transformation_config:DataTransformationConfig,
+                data_validation_artifact:DataValidationArtifact):
 
         try:
             self.data_validation_artifact = data_validation_artifact
