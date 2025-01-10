@@ -16,7 +16,12 @@ from sklearn.ensemble import(
             GradientBoostingClassifier,
             RandomForestClassifier
 )
-import mlflow
+import mlflow, dagshub
+
+# connecting to dagshub repository
+dagshub.init(repo_owner='AhmAdO9', repo_name='Project_Security', mlflow=True)
+
+
 
 class ModelTrainer:
     def __init__(self, 
