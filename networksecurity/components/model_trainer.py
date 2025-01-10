@@ -110,6 +110,9 @@ class ModelTrainer:
 
             network_model = NetworkModel(preprocessor=preprocessor_object, model=best_estimator)
             save_object(file_path=self.model_trainer_config.trained_model_file_path, obj=network_model)
+            
+            # final model
+            save_object(file_path="final_model/model.pkl", obj=best_estimator)
 
             ## Model Trainer Artifact
 
