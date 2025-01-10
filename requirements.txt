@@ -8,4 +8,5 @@ pymongo
 certifi
 scikit-learn
 pyaml
+mlflow
 # -e .

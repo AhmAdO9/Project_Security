@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/Faheem/Desktop/ML_Projects/ProjectSecurity/mlruns/0/be01c1f7c97549d58e117a2e0669a7ae/artifacts
+end_time: 1736524492896
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: be01c1f7c97549d58e117a2e0669a7ae
+run_name: magnificent-seal-151
+run_uuid: be01c1f7c97549d58e117a2e0669a7ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736524491127
+status: 3
+tags: []
+user_id: faheem

@@ -16,7 +16,7 @@ from sklearn.ensemble import(
             GradientBoostingClassifier,
             RandomForestClassifier
 )
-
+import mlflow
 
 class ModelTrainer:
     def __init__(self, 
@@ -27,6 +27,18 @@ class ModelTrainer:
         
         except Exception as e:
             raise NetworkSecurityException(e, sys)
+    
+    def track_mlflow(self, best_model, classification_metrics):
+        with mlflow.start_run():
+            f1_score = classification_metrics.f1_score
+            precision_score = classification_metrics.precision_score
+            recall_score = classification_metrics.recall_score
+
+            mlflow.log_metric("f1_score",f1_score)
+            mlflow.log_metric("precision_score",precision_score)
+            mlflow.log_metric("recall_score",recall_score)
+
+            mlflow.sklearn.log_model(best_model, "model")
 
 
     def train_model(self, x_train, x_test, y_train, y_test):
@@ -81,6 +93,10 @@ class ModelTrainer:
             y_test_pred = best_estimator.predict(x_test)
 
             classification_test_metrics = get_classification_score(y_test, y_test_pred)
+
+            ## Track the experiment with ML flow
+
+            self.track_mlflow(best_estimator, classification_test_metrics)
 
             preprocessor_object =  load_object(file_path = self.data_transformation_artifact.transformed_object_file_path)
 
