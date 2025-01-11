@@ -63,6 +63,7 @@ MODEL_TRAINER_OVERFITTING_UNDERFITTING_THRESHOLD:float = 0.05
 SAVED_MODEL_DIR = os.path.join("saved_models")
 
 
+FINAL_MODEL_DIR:str = "final_model"
 
 
 

@@ -79,10 +79,18 @@ class TrainingPipeline:
         except Exception as e:
             raise NetworkSecurityException(e, sys)
 
+    
+    def run_pipeline(self):
+        try:
+            self.start_data_ingestion()
+            self.start_data_validation()
+            self.start_data_transformation()
+            self.start_model_training()
+        
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
+
 
 if __name__=="__main__":
     trainingPipeline = TrainingPipeline()
-    trainingPipeline.start_data_ingestion()
-    trainingPipeline.start_data_validation()
-    trainingPipeline.start_data_transformation()
-    trainingPipeline.start_model_training()
+    trainingPipeline.run_pipeline()

@@ -18,7 +18,7 @@ from networksecurity.utils.utils import (
         save_object,
         save_numpy_array_data
 )
-
+from networksecurity.constants.training_pipeline import FINAL_MODEL_DIR
 
 class DataTransformation:
     def __init__(self, 
@@ -85,7 +85,7 @@ class DataTransformation:
             save_object(self.data_transformation_config.transformed_object_file_path, obj=preprocessor_object)
             
             # final preprocessor
-            save_object("final_model/preprocessor.pkl", obj=preprocessor_object)
+            save_object(file_path=f"{FINAL_MODEL_DIR}/preprocessor.pkl", obj=preprocessor_object)
 
 
             

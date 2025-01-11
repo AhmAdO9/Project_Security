@@ -16,6 +16,7 @@ from sklearn.ensemble import(
             GradientBoostingClassifier,
             RandomForestClassifier
 )
+from networksecurity.constants.training_pipeline import FINAL_MODEL_DIR
 import mlflow, dagshub
 
 # connecting to dagshub repository
@@ -112,7 +113,8 @@ class ModelTrainer:
             save_object(file_path=self.model_trainer_config.trained_model_file_path, obj=network_model)
             
             # final model
-            save_object(file_path="final_model/model.pkl", obj=best_estimator)
+
+            save_object(file_path=f"{FINAL_MODEL_DIR}/model.pkl", obj=best_estimator)
 
             ## Model Trainer Artifact
 
